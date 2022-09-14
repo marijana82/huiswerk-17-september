@@ -1,5 +1,9 @@
 import React, {useState} from 'react';
 import './App.css';
+import Labels from "./components/Labels";
+import Buttons from "./components/Buttons";
+import CounterButtons from "./components/CounterButtons";
+import LabelsChildren from "./components/LabelsChildren";
 
 
 function App() {
@@ -25,7 +29,6 @@ function App() {
         setAppleCounter(0);
         setKiwiCounter(0);
     }
-    
 
 
     function handleSubmit(e) {
@@ -57,152 +60,113 @@ function App() {
     <>
       <h1>Fruitmand bezorgservice</h1>
 
-        <article className="fruit">
-            <h2>Bananen</h2>
-            <button
-                type="button"
-                disabled={bananaCounter <= 0}
-                onClick={() => setBananaCounter(bananaCounter - 1)}
-            >-
-            </button>
 
-            <p>{bananaCounter}</p>
-
-            <button
-                type="button"
-                onClick={() => setBananaCounter(bananaCounter + 1)}
-            >+
-            </button>
-
-        </article>
+            <CounterButtons
+                titleFruitName="Bananen"
+                stateFruitName={bananaCounter}
+                stateFruitSetterFunctionMin={setBananaCounter}
+                buttonLabelMin="-"
+                totalNumberOfFruit={bananaCounter}
+                stateFruitSetterFunctionPlus={setBananaCounter}
+                buttonLabelPlus="+"
+            />
 
 
-        <article className="fruit">
-            <h2>Aardbeien</h2>
-            <button
-                type="button"
-                disabled={strawberryCounter <= 0}
-                onClick={() => setStrawberryCounter(strawberryCounter - 1)}
-            >-
-            </button>
-            <p>{strawberryCounter}</p>
-            <button
-                type="button"
-                onClick={() => setStrawberryCounter(strawberryCounter + 1)}
-            >+
-            </button>
+        <CounterButtons
+            titleFruitName="Aardbeien"
+            stateFruitName={strawberryCounter}
+            stateFruitSetterFunctionMin={setStrawberryCounter}
+            buttonLabelMin="-"
+            totalNumberOfFruit={strawberryCounter}
+            stateFruitSetterFunctionPlus={setStrawberryCounter}
+            buttonLabelPlus="+"
+        />
 
-        </article>
-
-
-
-
-        <article className="fruit">
-            <h2>Appels</h2>
-            <button
-                type="button"
-                disabled={appleCounter <= 0}
-                onClick={() => setAppleCounter(appleCounter -1)}
-            >-
-            </button>
-
-            <p>{appleCounter}</p>
-
-            <button
-                type="button"
-                onClick={() => setAppleCounter(appleCounter + 1)}
-            >+
-            </button>
-        </article>
+        <CounterButtons
+            titleFruitName="Appels"
+            stateFruitName={appleCounter}
+            stateFruitSetterFunctionMin={setAppleCounter}
+            buttonLabelMin="-"
+            totalNumberOfFruit={appleCounter}
+            stateFruitSetterFunctionPlus={setAppleCounter}
+            buttonLabelPlus="+"
+        />
 
 
-        <article className="fruit">
-            <h2>Kiwi's</h2>
-            <button
-                type="button"
-                disabled={kiwiCounter <= 0}
-                onClick={() => setKiwiCounter(kiwiCounter - 1)}
-            >-
-            </button>
-            <p>{kiwiCounter}</p>
-            <button
-                type="button"
-                onClick={() => setKiwiCounter(kiwiCounter + 1)}
-            >+
-            </button>
-        </article>
+        <CounterButtons
+            titleFruitName="Kiwi's"
+            stateFruitName={kiwiCounter}
+            stateFruitSetterFunctionMin={setKiwiCounter}
+            buttonLabelMin="-"
+            totalNumberOfFruit={kiwiCounter}
+            stateFruitSetterFunctionPlus={setKiwiCounter}
+            buttonLabelPlus="+"
+        />
 
-        <button
+        <Buttons
             className="reset_send"
             type="button"
-            onClick={() => resetCounters()}
+            clickHandler={resetCounters}
+            textButton="Reset"
+        />
 
-        > RESET
-        </button>
 
         <form
             onSubmit={handleSubmit}
             className="userInformation"
         >
-            <label
+
+            <Labels
                 htmlFor="firstname-field"
-            >Voornaam
-                <input
-                    id="firstname-field"
-                    type="text"
-                    name="firstname"
-                    placeholder="Fruiticious"
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
-                />
-            </label>
+                id="firstname-field"
+                type="text"
+                textLabel="Voornaam"
+                inputFieldPlaceholder={firstName}
+                name={firstName}
+                stateValue={firstName}
+                stateSetterFunction={(e) => setFirstName(e.target.value)}
+            />
 
 
-            <label
+            <Labels
                 htmlFor="lastname-field"
-            >Achternaam
-                <input
-                    id="lastname-field"
-                    type="text"
-                    name="lastname"
-                    placeholder="Delicious"
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
-                />
-            </label>
+                id="lastname-field"
+                type="text"
+                textLabel="Achternaam"
+                inputFieldPlaceholder={lastName}
+                name={lastName}
+                stateValue={lastName}
+                stateSetterFunction={(e) => setLastName(e.target.value)}
+            />
 
-
-            <label
+            <Labels
                 htmlFor="age-field"
-            >Leeftijd
-                <input
-                    id="age-field"
-                    type="number"
-                    name="age"
-                    placeholder="40"
-                    value={age}
-                    onChange={(e) => setAge(e.target.value)}
-                />
-            </label>
+                id="age-field"
+                type="number"
+                textLabel="Leeftijd"
+                inputFieldPlaceholder={age}
+                name={age}
+                stateValue={age}
+                stateSetterFunction={(e) => setAge(e.target.value)}
+            />
 
-
-            <label
+            <Labels
                 htmlFor="zipcode-field"
-            >Postcode
-                <input
-                    id="zipcode-field"
-                    type="text"
-                    name="zipcode"
-                    placeholder="1234TC"
-                    value={zipCode}
-                    onChange={(e) => setZipCode(e.target.value)}
-                />
-            </label>
+                id="zipcode-field"
+                type="text"
+                textLabel="Postcode"
+                inputFieldPlaceholder={zipCode}
+                name={zipCode}
+                stateValue={zipCode}
+                stateSetterFunction={(e) => setZipCode(e.target.value)}
+            />
 
 
-            <label
+
+            <LabelsChildren
                 htmlFor="frequency-field"
-            >Choose delivery frequency
+                title="Choose delivery frequency"
+            >
                 <select
                     id="frequency-field"
                     name="frequency"
@@ -213,13 +177,14 @@ function App() {
                     <option value="every-two-weeks">Every two weeks</option>
                     <option value="monthly">Once a month</option>
                 </select>
-            </label>
+            </LabelsChildren>
 
 
 
-            <label
+            <LabelsChildren
                 htmlFor="morning-field"
-            >Morning delivery
+                title="Morning delivery"
+            >
                 <input
                     id="morning-field"
                     type="radio"
@@ -227,11 +192,12 @@ function App() {
                     value={morning}
                     onChange={() => toggleMorning("morning")}
                 />
-            </label>
+            </LabelsChildren>
 
-            <label
+            <LabelsChildren
                 htmlFor="daytime-field"
-            >Daytime delivery
+                title="Daytime delivery"
+            >
                 <input
                     id="daytime-field"
                     type="radio"
@@ -239,12 +205,13 @@ function App() {
                     value={day}
                     onChange={() => toggleDay("day")}
                 />
-            </label>
+            </LabelsChildren>
 
 
-            <label
+            <LabelsChildren
                 htmlFor="evening-field"
-            >Evening delivery
+                title="Evening delivery"
+            >
                 <input
                     id="evening-field"
                     type="radio"
@@ -252,27 +219,26 @@ function App() {
                     value={evening}
                     onChange={() => toggleEvening("evening")}
                 />
-            </label>
+            </LabelsChildren>
 
 
-
-            <label
+            <Labels
                 htmlFor="comment-field"
-            >Leave your comment
-                <input
-                    id="comment-field"
-                    type="textarea"
-                    placeholder="Say Hi!"
-                    name="comment"
-                    value={comment}
-                    onChange={(e) => setComment(e.target.value)}
-                />
-            </label>
+                id="comment-field"
+                type="textarea"
+                textLabel="Comment"
+                inputFieldPlaceholder={comment}
+                name={comment}
+                stateValue={comment}
+                stateSetterFunction={(e) => setComment(e.target.value)}
+            />
 
 
-            <label
+
+            <LabelsChildren
                 htmlFor="termsAgree-field"
-            >Agree with the terms
+                title="Agree with the terms"
+            >
                 <input
                     id="termsAgree-field"
                     type="checkbox"
@@ -280,20 +246,17 @@ function App() {
                     value={agreeTerms}
                     onChange={() => setAgreeTerms(!agreeTerms)}
                 />
-            </label>
+            </LabelsChildren>
 
 
+<Buttons
+    textButton="SEND"
+    disableButton={agreeTerms === false}
+    typeButton="submit"
+    stateTermsAgree={agreeTerms}
 
+/>
 
-
-
-            <button
-                className="reset_send"
-                type="submit"
-                disabled={agreeTerms === false}
-
-            >SEND
-            </button>
 
         </form>
 
