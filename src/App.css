@@ -1,0 +1,33 @@
+article {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border: 2px solid green;
+    gap: 20px;
+    padding: 10px;
+}
+
+.counter {
+    border: 2px solid blue;
+}
+
+.reset_send {
+    border: 3px solid red;
+
+}
+
+.userInformation {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 2px solid cornflowerblue;
+    gap: 20px;
+    padding: 10px;
+
+}
+
+label {
+    display: flex;
+    gap: 10px;
+}
+
